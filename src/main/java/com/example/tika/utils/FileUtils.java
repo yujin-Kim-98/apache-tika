@@ -24,9 +24,9 @@ public class FileUtils {
         }
     }
 
-    public static boolean validImgFile(File file, InputStream inputStream) {
+    public static boolean validImgFile(InputStream inputStream) {
         try {
-            List<String> notValidTypeList = Arrays.asList("text/html");
+            List<String> notValidTypeList = Arrays.asList("image/jpeg", "image/pjpeg", "image/png", "image/gif", "image/bmp", "image/x-windows-bmp");
 
             String mimeType = tika.detect(inputStream);
             System.out.println("MimeType : " + mimeType);

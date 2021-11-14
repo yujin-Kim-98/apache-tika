@@ -15,11 +15,11 @@ public class FileServiceImpl implements FileService {
     @Override
     public void fileUpload(MultipartFile uploadFile) {
         try(InputStream inputStream = uploadFile.getInputStream()) {
-            File file = FileUtils.multipartfileToFile(uploadFile);
+            System.out.println("Content Type : " + uploadFile.getContentType());
 
-            if(!file.exists()) {
-                boolean isValid = FileUtils.validImgFile(file, inputStream);
-                if(isValid) {
+            if(!uploadFile.isEmpty()) {
+                boolean isValid = FileUtils.validImgFile(inputStream);
+                if(!isValid) {
                     // exception 처리
                     System.out.println("이미지 파일만 업로드 가능합니다.");
                 }
